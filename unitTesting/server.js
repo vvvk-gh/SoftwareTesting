@@ -1,5 +1,6 @@
 const express = require('express')
 const path = require('path')
+const fareutils = require('../fareutils')
 const app = express()
 
 app.use(express.urlencoded({extended : true}))
@@ -11,14 +12,13 @@ app.post('/calcfare', (req , res)=>{
     let km = parseFloat(req.body.km)
     let min = parseInt(req.body.min)
 
-    let fare = 50;
-   //kms fare
-    fare += (km > 5) ? ((km - 5)*10) : 0;
-    //time fare
-    fare +=  (min > 15) ? ((min - 15)*2) : 0;
-    
+    let fare = fareutils.calcfare(km, min) 
     res.send({fare : fare})
+})
 
+
+app.get('/rates' , (req , res) =>{
+    res.send(fareutils.rate)
 })
 
 app.listen('4444' , ()=>{

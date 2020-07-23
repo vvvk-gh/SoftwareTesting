@@ -1,0 +1,12 @@
+//basic model 
+
+kms              price
+0 to 5             50  // which means the minimum charge is 50
+5 to infinite      Rs.10/km
+
+
+Time                 price
+
+0-15 min                0/Free
+15 min - infinite       Rs.2/min
+

@@ -9,7 +9,7 @@ rate  = {
 function calcfare(km , min){
     let fare = rate.fixed
     fare += (km > rate.freeKm) ? ((km - rate.freeKm)*rate.perKm) : 0
-    fare +=  (min > rate.freeMin) ? ((min - rate.freeMin)*rate.freeMin) : 0
+    fare += (min > rate.freeMin) ? ((min - rate.freeMin)*rate.perMin) : 0
     return fare
 }
 

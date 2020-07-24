@@ -21,6 +21,4 @@ app.get('/rates' , (req , res) =>{
     res.send(fareutils.rate)
 })
 
-app.listen('4444' , ()=>{
-    console.log(`Listening at http://localhost:4444`)
-})
+exports = module.exports = app;

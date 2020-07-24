@@ -7,7 +7,16 @@ $(function (){
 
         getRatesBtn.click( ()=>{
             $.get('/rates' , (data)=>{
-                $('#rates').text(JSON.stringify(data))
+                let prettyRates =`
+                Fixed Fare = Rs. ${data.fixed} for ${data.freeKm} 
+                <br>
+                Fare (Distance) = Rs. ${data.perKm} per Km
+                <br>
+                Fare (Waiting)  = Rs.${data.perMin} /Min  ( after first ${data.freeMin} Min)
+                <br>
+                `
+                
+                $('#rates').html(prettyRates)
             })
         })
         calcfareBtn.click(() =>{
@@ -15,7 +24,7 @@ $(function (){
                     km : kmBox.val(),
                     min : minBox.val()
                 }, (data)=>{
-                    fareDiv.text(data.fare)
+                    fareDiv.text('Fare : ' +data.fare)
                 })
         })
 })
